@@ -53,7 +53,7 @@ fn main() {
     let args = Args::parse();
 
     let voxel_file = &args.model;
-    let voxel_data = dot_vox::load(&voxel_file).expect("parsing voxel file");
+    let voxel_data = dot_vox::load(voxel_file).expect("parsing voxel file");
 
     let mapping_raw = std::fs::read(&args.palette).expect("missing palette");
     let block_palette = BlockPalette::from_json(&mapping_raw);
@@ -88,7 +88,7 @@ fn main() {
     }
 }
 
-const PATTERN_EXTENSION: &'static str = ".cbsbp";
+const PATTERN_EXTENSION: &str = ".cbsbp";
 
 fn create_patterns(
     model: &dot_vox::Model,
@@ -229,7 +229,7 @@ fn data_to_pattern(data: ChiselData, statistics: Statistics) -> Vec<u8> {
         },
     };
     let container_nbt = fastnbt::to_bytes(&container).unwrap();
-    let nbt_base64 = base64::engine::general_purpose::STANDARD.encode(&container_nbt);
+    let nbt_base64 = base64::engine::general_purpose::STANDARD.encode(container_nbt);
 
     // Create pattern JSON
     let pattern = PatternFile {
@@ -237,7 +237,7 @@ fn data_to_pattern(data: ChiselData, statistics: Statistics) -> Vec<u8> {
         chisel_data: nbt_base64,
     };
     let pattern_bytes = serde_json::to_vec(&pattern).unwrap();
-    let pattern_string = base64::engine::general_purpose::STANDARD.encode(&pattern_bytes);
+    let pattern_string = base64::engine::general_purpose::STANDARD.encode(pattern_bytes);
     // zlib compress pattern
     let compressed_pattern =
         miniz_oxide::deflate::compress_to_vec_zlib(pattern_string.as_bytes(), 6);
@@ -292,7 +292,7 @@ fn model_to_data<'a>(
     Some((
         data.into_iter().map(|b| b as i8).collect(),
         Statistics {
-            primary_state: palette.get(0).unwrap(),
+            primary_state: palette.first().unwrap(),
             block_states,
         },
     ))
