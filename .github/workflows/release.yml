@@ -59,7 +59,7 @@ jobs:
         run: |
           mkdir release
           cp chisels_and_importers* ./release/
-          cp README.md ./release/
+          cp README.md blocks.json ./release/
       - uses: actions/upload-artifact@v3
         with:
           name: release-${{ matrix.platform }}
