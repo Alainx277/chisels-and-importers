@@ -1,0 +1,18 @@
+{
+    "#ffffff": "minecraft:white_wool",
+    "#b3b3b3": "minecraft:light_gray_wool",
+    "#595959": "minecraft:gray_wool",
+    "#000000": "minecraft:black_wool",
+    "#663300": "minecraft:brown_wool",
+    "#ff0000": "minecraft:red_wool",
+    "#f67e1d": "minecraft:orange_wool",
+    "#ffff00": "minecraft:yellow_wool",
+    "#99ff33": "minecraft:lime_wool",
+    "#009900": "minecraft:green_wool",
+    "#29a3a3": "minecraft:cyan_wool",
+    "#66e0ff": "minecraft:light_blue_wool",
+    "#0033cc": "minecraft:blue_wool",
+    "#800080": "minecraft:purple_wool",
+    "#ff00ff": "minecraft:magenta_wool",
+    "#ffb3e6": "minecraft:pink_wool"
+}
