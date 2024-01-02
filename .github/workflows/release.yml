@@ -92,6 +92,7 @@ jobs:
         run: |
           cd release
           ${{ matrix.archive-command }} *
+          mv ${{ matrix.output-path }} ..
       - name: Attach packaged build to release
         uses: softprops/action-gh-release@v1
         with:
